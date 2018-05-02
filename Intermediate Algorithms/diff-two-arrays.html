@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sdiff-two-arrays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #app {
+            width: 400px;            
+            padding: 20px;
+            margin: auto;
+            text-align: center;
+            font-weight: 500;
+            color: dimgray;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="app">Open Dev Console to See output</div>
+
+    <script>
+        function diffArray(arr1, arr2) {
+           var newArr = arr1.concat(arr2);
+
+           return newArr.reduce(function(val, index, array){
+               if(array.slice(index + 1).indexOf(val) === -1 && array.slice(0, index).indexOf(val) === -1 ) {
+                   return val;
+               };
+           });
+        }
+
+        console.log(diffArray([1, 2, 3, 5, 8], [1, 2, 3, 4, 5, 9]));
+    </script>
+</body>
+</html>
